@@ -1,13 +1,12 @@
 import pandas as pd
-
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')  #
 
 
 def result_analysis():
-    tasks = ['fb', 'osmc', 'books']
-    indexs = ['BTree', 'DynamicPGM', 'LIPP']
+    tasks = ['fb']
+    indexs = ['DynamicPGM', 'LIPP', 'HybridPGM_LIPP']
     # Create dictionaries to store throughput data for each index
     lookuponly_throughput = {}
     insertlookup_throughput = {}
@@ -90,7 +89,7 @@ def result_analysis():
         
     ax.set_title('Lookup-only Throughput')
     ax.set_ylabel('Throughput (Mops/s)')
-    ax.set_xticks([x + bar_width*1.5 for x in index])
+    ax.set_xticks([x for x in index])
     ax.set_xticklabels(indexs)
     ax.legend()
     
@@ -119,7 +118,7 @@ def result_analysis():
     
     ax.set_title('Insert-Lookup Throughput (50% insert ratio)')
     ax.set_ylabel('Throughput (Mops/s)')
-    ax.set_xticks([x + bar_width*1.5 for x in index])
+    ax.set_xticks([x for x in index])
     ax.set_xticklabels(indexs)
     ax.legend()
     
@@ -133,7 +132,7 @@ def result_analysis():
         
     ax.set_title('Mixed Workload (10% insert ratio)')
     ax.set_ylabel('Throughput (Mops/s)')
-    ax.set_xticks([x + bar_width*1.5 for x in index])
+    ax.set_xticks([x for x in index])
     ax.set_xticklabels(indexs)
     ax.legend()
     
@@ -147,7 +146,7 @@ def result_analysis():
         
     ax.set_title('Mixed Workload (90% insert ratio)')
     ax.set_ylabel('Throughput (Mops/s)')
-    ax.set_xticks([x + bar_width*1.5 for x in index])
+    ax.set_xticks([x for x in index])
     ax.set_xticklabels(indexs)
     ax.legend()
     
@@ -156,7 +155,7 @@ def result_analysis():
     plt.tight_layout(rect=[0, 0, 1, 0.95])
     
     # Save the figure
-    plt.savefig('benchmark_results.pdf', dpi=300)
+    plt.savefig('benchmark_results_stage2_0.05.pdf', dpi=300)
     # plt.show()
     
     # Save data to CSV files for further analysis
