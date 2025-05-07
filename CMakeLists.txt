@@ -34,6 +34,7 @@ set(BENCH_SOURCES
     "benchmarks/benchmark_pgm.cc"
     "benchmarks/benchmark_lipp.cc"
     "benchmarks/benchmark_hybrid_pgm_lipp.cc"
+    "benchmarks/benchmark_hybrid_pgm_lipp_opt.cc"
     "benchmarks/benchmark_btree.cc"
 )
 

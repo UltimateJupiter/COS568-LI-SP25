@@ -70,6 +70,28 @@ class DynamicPGM : public Competitor<KeyType, SearchClass> {
     return vec;
   }
 
+  void clear() {
+    // std::cout << "Clearing DynamicPGM" << std::endl;
+    // std::cout << "DynamicPGM size before clear: " << pgm_.size_in_bytes() << std::endl;
+    pgm_ = decltype(pgm_)();
+    // std::cout << "Cleared DynamicPGM" << std::endl;
+    // std::cout << "DynamicPGM size after clear: " << pgm_.size_in_bytes() << std::endl;
+  }
+
+  std::vector<KeyValue<KeyType>> extract_data() {
+    // Iterate through PGM and send to cache vector
+    std::vector<KeyValue<KeyType>> pgm_cache_;
+    pgm_cache_.reserve(pgm_.size_in_bytes());
+
+    auto it_pgm = pgm_.lower_bound(std::numeric_limits<KeyType>::lowest());
+    while(it_pgm != pgm_.end()){
+        pgm_cache_.emplace_back(KeyValue<KeyType>{it_pgm->key(), it_pgm->value()});
+        ++it_pgm;
+    }
+    return pgm_cache_;
+  }
+
+
  private:
   DynamicPGMIndex<KeyType, uint64_t, SearchClass, PGMIndex<KeyType, SearchClass, pgm_error, 16>> pgm_;
 };

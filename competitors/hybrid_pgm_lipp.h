@@ -1,5 +1,5 @@
-#ifndef TLI_DYNAMIC_PGM_H
-#define TLI_DYNAMIC_PGM_H
+#ifndef TLI_DYNAMIC_PGM_HYBRID_H
+#define TLI_DYNAMIC_PGM_HYBRID_H
 #pragma once
 
 #include <algorithm>
